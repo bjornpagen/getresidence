@@ -1,0 +1,8 @@
+:go:func(args) (obj struct { 
+	Children []Component })
+
+section#onboarding
+	h2 Please fill out the following form to get started
+	each val in obj.Children
+		| !{val}
+	button.btn1(hx-post="/dubai/checkout", hx-swap="none", hx-sync="input:queue", type="submit"): span Submit

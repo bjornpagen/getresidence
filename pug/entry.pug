@@ -1,0 +1,13 @@
+:go:func(args) (s struct {
+	Name string
+	Value string
+	Schema string
+	State string
+	Small string
+	Endpoint string })
+
+#entry(class=s.State)
+	label(for=s.Name)= s.Name
+	input(id=s.Name, type=s.Schema, name=s.Name, value=s.Value, required="required", hx-put=s.Endpoint, hx-swap="outerHTML", hx-sync="input:queue", hx-target="closest #entry")
+	if len(s.Small) > 0
+		small= s.Small

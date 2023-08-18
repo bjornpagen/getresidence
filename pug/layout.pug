@@ -1,0 +1,45 @@
+:go:func(args) (s struct {
+	Main        Component
+	Domain      string
+	Icon        string
+	Title       string
+	Description string
+	Nonce       string }, styles_RESET string, styles_SYSTEM string)
+
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		title= s.Title
+		meta(name="description", content=s.Description)
+		link(rel="icon", href=s.Icon)
+		meta(property="og:locale", content="en_US")
+		meta(property="og:title", content=s.Title)
+		meta(property="og:description", content=s.Description)
+		//- TODO: meta property="og:image" content="https://example.com/image.jpg" {}
+		//- TODO: meta property="og:image:alt" content="A description of what is in the image (not a caption)." {}
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		style#reset(nonce=s.Nonce)
+			!= styles_RESET
+		style#global(nonce=s.Nonce)
+			!= styles_SYSTEM
+		link#fonts(rel="preload", href="https://use.typekit.net/gnn8txw.css", as="style", nonce=s.Nonce)
+		script(nonce=s.Nonce).
+			const link = document.querySelector('#fonts');
+			link.onload = () => {
+				link.onload = null;
+				link.rel = 'stylesheet';
+			};
+		noscript
+			link(rel="stylesheet", href="https://use.typekit.net/gnn8txw.css", nonce=s.Nonce)
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.4/htmx.min.js", integrity="sha512-ZM2vxgVBxhBI5Etj/c/qcJV+upate3VzbVQOQRCx1YGuyEX9dYdMh8pRUot4xIwtAay6QwRQC/FdXRjSWIEHrg==", crossorigin="anonymous", referrerpolicy="no-referrer", async, nonce=s.Nonce)
+	body(hx-boost="true")
+		header
+			a(href="/")= s.Domain
+		main
+			!= s.Main
+		footer
+			a(href="/privacy") Privacy Policy
+		noscript
+			#noscript
+				h1 You must enable Javascript in order to use this site
