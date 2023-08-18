@@ -1,6 +1,7 @@
 package getresidence
 
 import (
+	"encoding/base64"
 	"net/http"
 
 	"github.com/efficientgo/core/errcapture"
@@ -16,11 +17,17 @@ type server struct {
 	stripe *client.API
 }
 
-func New(branca *branca.Branca, stripe *client.API, dbUrl string) (*server, error) {
+func New(stripe *client.API, dbUrl string, brancaKeyBase64 string) (*server, error) {
 	db, err := newDb(dbUrl)
 	if err != nil {
 		return nil, errors.New("new db")
 	}
+
+	brancaKey, err := base64.StdEncoding.DecodeString(brancaKeyBase64)
+	if err != nil {
+		return nil, errors.Wrap(err, "decode branca key")
+	}
+	branca := branca.NewBranca(string(brancaKey))
 
 	s := &server{
 		db,
