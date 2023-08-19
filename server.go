@@ -61,6 +61,10 @@ func (s *server) Routes() *bunrouter.Router {
 	return r
 }
 
+func (s *server) RegisterDomainRoutes(m map[string]*bunrouter.Router) {
+	m["getresidence.org"] = s.Routes()
+}
+
 func (s *server) Close() (err error) {
 	errcapture.Do(&err, s.db.Close, "close db")
 
