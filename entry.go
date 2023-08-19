@@ -3,7 +3,7 @@ package getresidence
 import (
 	"io"
 
-	"github.com/bjornpagen/getresidence-org/server/getresidence/pug/gen"
+	"github.com/bjornpagen/getresidence/pug/gen"
 )
 
 type entry struct {

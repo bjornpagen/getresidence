@@ -4,7 +4,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/bjornpagen/getresidence-org/server/getresidence/pug/gen"
+	"github.com/bjornpagen/getresidence/pug/gen"
 	"github.com/uptrace/bunrouter"
 )
 

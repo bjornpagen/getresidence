@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/bjornpagen/getresidence-org/server/getresidence/pug/gen"
+	"github.com/bjornpagen/getresidence/pug/gen"
 	"github.com/efficientgo/core/errors"
 
 	"github.com/uptrace/bunrouter"
