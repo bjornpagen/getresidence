@@ -1,4 +1,4 @@
-module github.com/bjornpagen/getresidence
+module github.com/bjornpagen/getresidence-prototype
 
 go 1.21.0
 

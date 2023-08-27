@@ -4,7 +4,7 @@ import (
 	_ "embed"
 	"io"
 
-	"github.com/bjornpagen/getresidence/pug/gen"
+	"github.com/bjornpagen/getresidence-prototype/pug/gen"
 )
 
 //go:embed static/reset.css
